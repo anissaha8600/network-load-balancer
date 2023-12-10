@@ -1,3 +1,4 @@
+import sys
 import requests
 from flask import Flask, request
 
@@ -49,13 +50,6 @@ def chooseWRR(host_elem):
         acc += server['weight']
 
 
-# load and config from yaml file 
-# and setup parameters for runtime
-config = load_config('config.yaml')
-setupWRR(config)
-print(config)
-
-
 @loadbalancer.route('/<path>')
 def router(path):
     """Handle request to servers routed to /<path> using WRR
@@ -72,4 +66,16 @@ def router(path):
     return 'Not Found', 404
 
 if __name__ == '__main__':
+
+    # load and config from yaml file 
+    # and setup parameters for runtime
+    if len(sys.argv) > 1:
+        path = sys.argv[1] 
+    else:
+        path = 'config.yaml' # default path
+    
+    config = load_config(path)
+    setupWRR(config)
+    print(config)
+
     loadbalancer.run(host='0.0.0.0', port=5000)
