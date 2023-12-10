@@ -71,4 +71,5 @@ def router(path):
         
     return 'Not Found', 404
 
-    
+if __name__ == '__main__':
+    loadbalancer.run(host='0.0.0.0', port=5000)
