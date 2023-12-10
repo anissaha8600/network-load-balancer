@@ -1,5 +1,5 @@
 hosts:
-  - host: server1
+  - host: service1
     servers:
       - port: 5000
         ip: 10.0.0.5

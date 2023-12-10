@@ -1,9 +1,15 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
+LOAD_BALANCER_IP = '10.0.0.4:5000'
 
 @app.route('/')
 def hello():
+    sender = request.remote_addr
+    if sender != LOAD_BALANCER_IP:
+        print(f'unrecognized sender: {sender}')
+        return 'Not Found', 404
+    
     return 'Hello, this is Server1!'
 
 if __name__ == '__main__':
