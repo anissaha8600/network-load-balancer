@@ -8,8 +8,8 @@ LOAD_BALANCER_IP = '10.0.0.4'
 SELF_IP = socket.gethostbyname_ex(socket.gethostname())[2][0]
 print(SELF_IP)
 
-def handleService(name):
-    return f'Hi, this is server1, thank you for using {name}'
+def handleService(name, service):
+    return f'Hi, this is {name}, thank you for using {service}'
 
 # load config yaml file
 def load_config(path):
@@ -44,7 +44,7 @@ def router(service):
     # iterate through valid services handled by this server 
     for s in services:
         if service == s:
-            return handleService(service)
+            return handleService(name, service)
     
     return 'Hello, this is Server1!'
 
