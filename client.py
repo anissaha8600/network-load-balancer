@@ -20,7 +20,7 @@ if __name__ == '__main__':
         limit = int(sys.argv[2])
 
 
-    lambda_val = float(req_per_min) / 60.0
+    lambda_val = 60. / float(req_per_min)
 
     while(limit == None or limit > 0):
         response = ""
