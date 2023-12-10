@@ -22,8 +22,9 @@ def setupWRR(config):
         n = 0
         for server in elem:
             n += server['weight']
-        config[i]['n'] = n
-        config[i]['curr'] = 0
+
+        config[i]['n'] = n          # modulo number
+        config[i]['curr'] = 0       # current iteration number
     
     print(config)
     return
@@ -34,7 +35,7 @@ def chooseWRR(host_elem):
     Weighted Round Robin """
 
     val = host_elem['curr']
-    assert val >= 0 and host_elem['n']
+    assert val >= 0 and val < host_elem['n']
 
     # iterate through each server to determine which one to request 
     # to based on RR value 
