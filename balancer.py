@@ -1,4 +1,3 @@
-
 import requests
 from flask import Flask, request
 
@@ -15,18 +14,19 @@ def load_config(path):
 
     return config
 
+config = load_config('config.yaml')
+
 def setupWRR(config):
 
     # iterate each host to determine modulo number
-    for i, elem in enumerate(config):
+    for i, host in enumerate(config['hosts']):
+        print(i)
         n = 0
-        for server in elem:
+        for server in host['servers']:
             n += server['weight']
+        config['hosts'][i]['n'] = n
+        config['hosts'][i]['curr'] = 0
 
-        config[i]['n'] = n          # modulo number
-        config[i]['curr'] = 0       # current iteration number
-    
-    print(config)
     return
 
 
@@ -35,12 +35,12 @@ def chooseWRR(host_elem):
     Weighted Round Robin """
 
     val = host_elem['curr']
-    assert val >= 0 and val < host_elem['n']
+    assert val >= 0 and host_elem['n']
 
     # iterate through each server to determine which one to request 
     # to based on RR value 
     acc = 0
-    for server in host_elem:
+    for server in host_elem['servers']:
         if val < acc + server['weight']:
 
             # update RR iterator to next value upon request
@@ -54,6 +54,7 @@ def chooseWRR(host_elem):
 # and setup parameters for runtime
 config = load_config('config.yaml')
 setupWRR(config)
+print(config)
 
 
 @loadbalancer.route('/<path>')
@@ -70,3 +71,5 @@ def router(path):
            
         
     return 'Not Found', 404
+
+    
