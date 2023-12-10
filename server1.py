@@ -1,7 +1,7 @@
 from flask import Flask, request
 
 app = Flask(__name__)
-LOAD_BALANCER_IP = '10.0.0.4:5000'
+LOAD_BALANCER_IP = '10.0.0.4'
 
 @app.route('/')
 def hello():
