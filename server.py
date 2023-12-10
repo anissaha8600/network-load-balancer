@@ -5,7 +5,20 @@ import socket
 
 app = Flask(__name__)
 LOAD_BALANCER_IP = '10.0.0.4'
-SELF_IP = socket.gethostbyname_ex(socket.gethostname())[2][0]
+
+
+
+def get_local_ip():
+    try:
+        # Create a socket to get local IP address
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.connect(('8.8.8.8', 80))  # Connect to a known external server
+        local_ip = sock.getsockname()[0]
+        return local_ip
+    except socket.error:
+        return 'Unknown'
+
+SELF_IP = get_local_ip()
 print(SELF_IP)
 
 def handleService(name, service):
