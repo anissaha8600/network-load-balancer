@@ -20,7 +20,6 @@ def setupWRR(config):
 
     # iterate each host to determine modulo number
     for i, host in enumerate(config['hosts']):
-        print(i)
         n = 0
         for server in host['servers']:
             n += server['weight']
@@ -35,7 +34,7 @@ def chooseWRR(host_elem):
     Weighted Round Robin """
 
     val = host_elem['curr']
-    assert val >= 0 and host_elem['n']
+    assert val >= 0 and host_elem['n'] > val
 
     # iterate through each server to determine which one to request 
     # to based on RR value 
@@ -45,7 +44,7 @@ def chooseWRR(host_elem):
 
             # update RR iterator to next value upon request
             host_elem["curr"] = (val + 1) % host_elem['n']
-            return server['port']
+            return f"{server['ip']}:{server['port']}"
         
         acc += server['weight']
 
