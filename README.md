@@ -325,25 +325,23 @@ debian@debian:~/network_load_balancer$ pveryython3 client.py 20 service2 6
 ```
 ## Discussion
 From the code above, we let RenatClient request service1 12 times and service3 3 times, and we let AnisClient request service2 6 times. We let the servers and load balancer use the config2.yaml file, which results in this assignment of requests:
-```
-service1's 12 requests will be distributed:
-	2 for server1
-	4 for server2
-	6 for server3
-service2's 6 requests will be distributed:
-	2 for server1
-	4 for server2
-service3's 3 requests will be distributed:
-	3 for server1
-```
+- service1's 12 requests will be distributed:
+    - 2 for server1
+    - 4 for server2
+	- 6 for server3
+- service2's 6 requests will be distributed:
+	- 2 for server1
+	- 4 for server2
+- service3's 3 requests will be distributed:
+	- 3 for server1
+
 
 So in total there are 18 requests with this distribution: 
 - server1 should get `2 + 2 + 3 = 7` requests.
 - server2 should get `4 + 4 = 8` requests.
 - server3 should get `6` requests.
-which is fairly balanced.
 
-This matches the number of lines `10.0.0.4 - - [11/Dec/2023 00:30:14] "GET /service HTTP/1.1" 200 -` that are printed for the each of the servers in the results above.
+This is fairly balanced and matches the number of lines `10.0.0.4 - - [11/Dec/2023 00:30:14] "GET /service HTTP/1.1" 200 -` that are printed for the each of the servers in the results above.
 
 Without load balancing, if we had serviceN simply assigned to serverN. Server1 would get 12 requests, server2 would get 6 and server3 would get 3 requests. Server1 would be overutilized and server2 would be underutilized.
 # Conclusion and Lesson
