@@ -70,9 +70,9 @@ if __name__ == '__main__':
     name = sys.argv[1]
     conf_path = sys.argv[2]
 
-    print(f"Hi, I'm {name}, I handle {services}, awaiting load_balancer {LOAD_BALANCER_IP}")
-
     config = load_config(conf_path)
     add_services(config)
+
+    print(f"Hi, I'm {name}, I handle {services}, awaiting load_balancer {LOAD_BALANCER_IP}")
 
     app.run(host='0.0.0.0', port=5000)
