@@ -50,8 +50,8 @@ def chooseWRR(host_elem):
         acc += server['weight']
 
 
-@loadbalancer.route('/<path>')
-def router(path):
+@loadbalancer.route('/<service>')
+def router(service):
     """Handle request to servers routed to /<path> using WRR
     Load Balancing """
 
@@ -59,7 +59,7 @@ def router(path):
         if path == elem['host']:
 
             # choose server based on WRR
-            response = requests.get(f'http://{chooseWRR(elem)}')
+            response = requests.get(f'http://{chooseWRR(elem)/{service}}')
             return response.content, response.status_code
            
         
