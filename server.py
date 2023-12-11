@@ -37,7 +37,8 @@ def load_config(path):
 def add_services(config):
     for host_elem in config['hosts']:
         ips = [server['ip'] for server in host_elem['servers']]
-        if SELF_IP in ips:
+        print(ips)
+        if SELF_IP.strip() in ips.strip():
             services.append(host_elem['host'])
 
 
