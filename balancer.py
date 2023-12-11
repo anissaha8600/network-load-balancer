@@ -56,7 +56,7 @@ def router(service):
     Load Balancing """
 
     for elem in config['hosts']:
-        if path == elem['host']:
+        if service == elem['host']:
 
             # choose server based on WRR
             response = requests.get(f'http://{chooseWRR(elem)}/{service}')
