@@ -7,12 +7,14 @@ In this project, we created a Network Load Balancing System using the real-time 
 - Configuring the router: setting the ip addresses of the interfaces, configuring the NAT to get Internet access inside the Debian VMs.
 - Configuring each Debian VM: setting the ip address, gateway and dns server, then installing the necessary python packages and cloning the code.
 - Writing the documentation and recording the video.
+- Tested the code in the VMs.
 ## Anis Saha
 - Implemented load balancer, client and server Python code in flask.
 - Set up yaml files for loadbalancer to map to gns3 topology.
 - Implemented service dependant weighted round robin algorithm in python.
 - Wrote tests to test round robin, error 404 cases, and server permssions.
 - Recording the video.
+- Tested the code in the VMs.
 # How to Run and Test the Implementation
 - Open the topology in gns3.
 - Click on Start all nodes.
