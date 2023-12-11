@@ -1,4 +1,5 @@
 # Project Description and Goals
+gns3 topology download link: https://drive.google.com/file/d/121_zg_-tlbEi5EtR9vFZeRAc_9YvBKn6/view?usp=sharing
 In this project, we created a Network Load Balancing System using the real-time network simulation software `gns3`. We created a topology that includes 2 clients, 3 servers, and 1 load balancer. Each server is responsible for hosting different services. We created the load balancer, the client and server services using Python and the Flask package. The load balanacer is a weighted round robin, with each service having a specific weight assigned to it in each server. That means, for a service, if server1 has weight 1 and server2 has weight 2, server2 should recieve twice as many requests. The load balancer can easily be configured for any number of servers or services using a `config.yaml` file. This could, in real life, account for different servers with different capabilities and different services to handle.
 # Contribution of Each Team Member
 ## Renat Hossain
