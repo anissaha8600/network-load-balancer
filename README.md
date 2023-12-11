@@ -172,7 +172,7 @@ The load balancer redirects the request to the server, and relays the reply back
 ### server.py
 Specification: `python3 server.py [SERVER_NAME] [CONFIG_PATH]` 
 
-This script handles the implementation of the server, and can be run from any of the server gns nodes (10.0.0.5, 10.0.0.6, 10.0.0.7). It will accept requests python3 server.py [SERVER_NAME] [CONFIG_PATH]only from the load balancer (will 404 for any other sender) and perform service requests based on the services provided in the config file.
+This script handles the implementation of the server, and can be run from any of the server gns nodes (10.0.0.5, 10.0.0.6, 10.0.0.7). It will accept requests python3 server.py [SERVER_NAME] [CONFIG_PATH] only from the load balancer (will 404 for any other sender) and perform service requests based on the services provided in the config file.
 ### client.py
 Specification: `python3 client.py [REQUEST_RATE_PER_MIN] [SERVICE_NAME] [NUMBER_OF_REQUESTS]`
 
