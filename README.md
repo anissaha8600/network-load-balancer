@@ -343,6 +343,6 @@ So in total there are 18 requests with this distribution:
 
 This is fairly balanced and matches the number of lines `10.0.0.4 - - [11/Dec/2023 00:30:14] "GET /service HTTP/1.1" 200 -` that are printed for the each of the servers in the results above.
 
-Without load balancing, if we had serviceN simply assigned to serverN. Server1 would get 12 requests, server2 would get 6 and server3 would get 3 requests. Server1 would be overutilized and server2 would be underutilized.
+Without load balancing, if we had serviceN simply assigned to serverN. Server1 would get 12 requests, server2 would get 6 and server3 would get 3 requests. Server1 would be overutilized and server3 would be underutilized.
 # Conclusion and Lesson
 In conclusion, we have achieved our goal of creating a flexible network load balancer in gns3, that uses a round robin algorithm implemented in Python using the Flask library. We have learned a lot about configuring topologies in gns3 using custom appliances (Debian and Cisco Routers). We were able to achieve the results that we wanted. Future improvements to this project can include making real services (for example, transactions, multiplayer games, etc.) as well as better and more dynamic load balancing algorithms other than round robin.
