@@ -59,7 +59,7 @@ def router(service):
         if path == elem['host']:
 
             # choose server based on WRR
-            response = requests.get(f'http://{chooseWRR(elem)/{service}}')
+            response = requests.get(f'http://{chooseWRR(elem)}/{service}')
             return response.content, response.status_code
            
         
